@@ -1,5 +1,5 @@
 {
-	"name": "DS_json_file",
+	"name": "DS_source_json_file",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "LS_Datalake_ADLS",
