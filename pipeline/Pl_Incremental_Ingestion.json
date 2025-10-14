@@ -318,6 +318,36 @@
 						}
 					]
 				}
+			},
+			{
+				"name": "SpotifyEmailAlert",
+				"type": "WebActivity",
+				"dependsOn": [
+					{
+						"activity": "Loop for incremental data load",
+						"dependencyConditions": [
+							"Failed",
+							"Skipped",
+							"Completed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"method": "POST",
+					"url": "https://prod-11.northcentralus.logic.azure.com:443/workflows/b2824070104b45d0a048c2e1f2a9e68e/triggers/When_an_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_an_HTTP_request_is_received%2Frun&sv=1.0&sig=T_UF1F8VQfkuCxVNvkpuUvYIkm8DjEmadVOBT1av7h0",
+					"body": {
+						"value": "{\n    \"pipeline_name\": \"@{pipeline().Pipeline}\"\n    \"pipeline_runId\": \"@{pipeline().RunId}\"\n\n}",
+						"type": "Expression"
+					}
+				}
 			}
 		],
 		"parameters": {
