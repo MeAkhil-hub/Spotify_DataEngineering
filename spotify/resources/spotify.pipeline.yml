@@ -1,0 +1,14 @@
+# The main pipeline for spotify
+resources:
+  pipelines:
+    spotify_pipeline:
+      name: spotify_pipeline
+      catalog: databricks_spotify
+      schema: spotify_${bundle.target}
+      serverless: true
+      libraries:
+        - notebook:
+            path: ../src/pipeline.ipynb
+
+      configuration:
+        bundle.sourcePath: ${workspace.file_path}/src
